@@ -333,8 +333,8 @@
 
                         <div class="col-3 mb-3">
                             <div class="form-group">
-                                <label for="other_two" class="mb-2">Other Two</label>
-                                <input type="date" name="other_two" class="form-control form-control-sm"
+                                <label for="other_two" class="mb-2">Mental Health</label>
+                                <input type="text" name="other_two" class="form-control form-control-sm"
                                     value="{{ old('other_two', $rating->other_two) }}">
                             </div>
                         </div>

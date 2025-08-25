@@ -73,7 +73,7 @@ class RatingController extends Controller
             'readiness' => 'nullable|date',
 
             'other_one' => 'nullable|string',
-            'other_two' => 'nullable|date',
+            'other_two' => 'nullable|string',
             'other_three' => 'nullable|date',
             'other_four' => 'nullable|date',
         ]);
@@ -192,7 +192,7 @@ class RatingController extends Controller
             'readiness' => 'nullable|date',
 
             'other_one' => 'nullable|string',
-            'other_two' => 'nullable|date',
+            'other_two' => 'nullable|string',
             'other_three' => 'nullable|date',
             'other_four' => 'nullable|date',
         ]);

@@ -766,12 +766,13 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th class="fs-5">Other Two</th>
+                                                                    <th class="fs-5">Mental Health</th>
                                                                     <td>
-                                                                        @if ($item->other_two)
+                                                                        {{-- @if ($item->other_two)
                                                                             {{ \Carbon\Carbon::parse($item->other_two)->format('F j, Y') }}
                                                                         @else
-                                                                        @endif
+                                                                        @endif --}}
+                                                                        {{ $item->other_two }}
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
