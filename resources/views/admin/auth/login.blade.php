@@ -6,10 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
+    <meta name="description" content="">
     <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="keywords" content="">
 
     <title>AZ Shipping | Admin-Login</title>
 
@@ -141,9 +140,9 @@
                                                 </button>
                                             </div>
 
-                                            <a href="{{ route('admin.password.request') }}"
+                                            {{-- <a href="{{ route('admin.password.request') }}"
                                                 class="d-block mt-3 text-muted">Forgot Password?
-                                                Click Here</a>
+                                                Click Here</a> --}}
 
                                         </form>
                                     </div>
