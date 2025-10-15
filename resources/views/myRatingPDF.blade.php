@@ -368,7 +368,8 @@
             <th class="fs-5">Other Two</th>
             <td>
                 @if ($item->other_two)
-                    {{ \Carbon\Carbon::parse($item->other_two)->format('F j, Y') }}
+                    {{-- {{ \Carbon\Carbon::parse($item->other_two)->format('F j, Y') }} --}}
+                    {{ $item->other_two }}
                 @else
                 @endif
             </td>
@@ -377,7 +378,8 @@
             <th class="fs-5">Other Three</th>
             <td>
                 @if ($item->other_three)
-                    {{ \Carbon\Carbon::parse($item->other_three)->format('F j, Y') }}
+                    {{-- {{ \Carbon\Carbon::parse($item->other_three)->format('F j, Y') }} --}}
+                    {{ $item->other_three }}
                 @else
                 @endif
             </td>
@@ -386,7 +388,8 @@
             <th class="fs-5">Other Four</th>
             <td>
                 @if ($item->other_four)
-                    {{ \Carbon\Carbon::parse($item->other_four)->format('F j, Y') }}
+                    {{-- {{ \Carbon\Carbon::parse($item->other_four)->format('F j, Y') }} --}}
+                    {{ $item->other_four }}
                 @else
                 @endif
             </td>
