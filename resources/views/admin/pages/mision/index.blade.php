@@ -127,10 +127,11 @@
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead class="bg-dark text-light">
                     <tr>
-                        <th width="5%">No</th>
-                        <th width="10%">Mision</th>
-                        <th width="5%">Status</th>
-                        <th width="5%">Actions</th>
+                        <th width="2%">No</th>
+                        <th width="4%">Image</th>
+                        <th width="25%">Mision</th>
+                        <th width="2%">Status</th>
+                        <th width="2%">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="fw-bold text-gray-600">
@@ -138,6 +139,7 @@
                     @foreach ($items as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
+                            <td>Image</td>
 
                             <td>
                                 <h6>{!! $item->mision !!}</h6>
