@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->longText('mision')->nullable();
+            $table->string('image')->nullable();
             $table->string('status')->nullable();
+            
             $table->integer('added_by')->nullable();
             $table->integer('updated_by')->nullable();
 

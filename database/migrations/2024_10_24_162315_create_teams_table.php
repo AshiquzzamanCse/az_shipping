@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('whatup')->nullable();
             $table->string('phone')->nullable();
             $table->string('image')->nullable();
+            
             $table->string('status')->nullable();
 
             $table->timestamps();

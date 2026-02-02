@@ -61,9 +61,10 @@ require __DIR__ . '/admin.php';
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 /// Product Search Route
-Route::post('/search', [HomeController::class, 'courseSearch'])->name('course.search');
+//Route::post('/search', [HomeController::class, 'courseSearch'])->name('course.search');
+
 // Advance Search Routes
-Route::post('global-search', [HomeController::class, 'globalSearch'])->name('global.search');
+// Route::post('global-search', [HomeController::class, 'globalSearch'])->name('global.search');
 
 require __DIR__ . '/frontend.php';
 require __DIR__ . '/api.php';
