@@ -100,7 +100,8 @@
     </style>
 
     <div class="card card-flash">
-        <div class="card-header mt-6">
+
+        {{-- <div class="card-header mt-6">
             <div class="card-title"></div>
             <div class="card-toolbar">
 
@@ -120,7 +121,7 @@
                 </a>
 
             </div>
-        </div>
+        </div> --}}
 
         <div class="card-body pt-0">
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
@@ -159,9 +160,9 @@
                                 {{-- @endif
 
                                 @if (Auth::guard('admin')->user()->can('delete.banner')) --}}
-                                <a href="{{ route('admin.mision.destroy', $item->id) }}" class="delete">
+                                {{-- <a href="{{ route('admin.mision.destroy', $item->id) }}" class="delete">
                                     <i class="fa-solid fa-trash text-danger"></i>
-                                </a>
+                                </a> --}}
                                 {{-- @endif --}}
 
                             </td>
