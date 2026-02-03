@@ -113,6 +113,7 @@
                                 @enderror
                             </div>
                         </div>
+                        
                         <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Image</label>
@@ -121,6 +122,7 @@
                                 @error('image')
                                     <div class="text-danger small">{{ $message }}</div>
                                 @enderror
+                                <b class="text-danger">Image Size: Height Must Be 430 px</b>
                             </div>
                         </div>
 

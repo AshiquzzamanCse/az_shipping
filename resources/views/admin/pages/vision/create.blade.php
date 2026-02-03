@@ -30,7 +30,8 @@
                 <div class="card bg-light">
 
                     <div class="row p-4">
-                        <div class="col-4 mb-3">
+
+                        <div class="col-2 mb-3">
                             <div class="form-group">
                                 <label for="status" class="mb-2">Status</label>
                                 <select name="status" id="status" class="form-select form-select-sm"
@@ -44,6 +45,18 @@
                                 @error('status')
                                     <div class="text-danger mt-2">{{ $message }}</div>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Image</label>
+                                <input type="file" name="image" accept="image/*"
+                                    class="form-control form-control-sm">
+                                @error('image')
+                                    <div class="text-danger small">{{ $message }}</div>
+                                @enderror
+                                <p class="text-danger">Image Size: width:600px;height:400px</p>
                             </div>
                         </div>
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Team;
@@ -32,37 +31,37 @@ class TeamController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-            'order_team' => 'required|integer',
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|string|max:255',
+            'position'    => 'required|string|max:255',
+            'order_team'  => 'required|integer',
             'short_descp' => 'nullable|string',
-            'facebook' => 'nullable|url|max:255',
-            'whatup' => 'nullable|string|max:15',
-            'phone' => 'nullable|string|max:15',
-            'status' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Example for image validation
+            'facebook'    => 'nullable|url|max:255',
+            'whatup'      => 'nullable|string|max:15',
+            'phone'       => 'nullable|string|max:15',
+            'status'      => 'required',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Example for image validation
         ]);
 
         $mainFile = $request->file('image');
-        $imgPath = storage_path('app/public/team/');
+        $imgPath  = storage_path('app/public/team/');
 
         $data = [
 
-            'name' => $request->name,
-            'email' => $request->email,
-            'position' => $request->position,
-            'order_team' => $request->order_team,
+            'name'        => $request->name,
+            'email'       => $request->email,
+            'position'    => $request->position,
+            'order_team'  => $request->order_team,
             'short_descp' => $request->short_descp,
-            'facebook' => $request->facebook,
-            'whatup' => $request->whatup,
-            'phone' => $request->phone,
-            'status' => $request->status,
+            'facebook'    => $request->facebook,
+            'whatup'      => $request->whatup,
+            'phone'       => $request->phone,
+            'status'      => $request->status,
 
-            'created_at' => now(),
+            'created_at'  => now(),
         ];
 
-        if (!empty($mainFile)) {
+        if (! empty($mainFile)) {
             $globalFunImg = customUpload($mainFile, $imgPath);
 
             if ($globalFunImg['status'] == 1) {
@@ -102,7 +101,7 @@ class TeamController extends Controller
     {
         $banner = Team::findOrFail($id);
 
-        $mainFile = $request->file('image');
+        $mainFile   = $request->file('image');
         $uploadPath = storage_path('app/public/team/');
 
         if (isset($mainFile)) {
@@ -111,7 +110,7 @@ class TeamController extends Controller
             $globalFunImg['status'] = 0;
         }
 
-        if (!empty($banner)) {
+        if (! empty($banner)) {
 
             if ($globalFunImg['status'] == 1) {
                 if (File::exists(public_path('storage/team/requestImg/') . $banner->image)) {
@@ -128,17 +127,17 @@ class TeamController extends Controller
 
             $banner->update([
 
-                'name' => $request->name,
-                'email' => $request->email,
-                'position' => $request->position,
-                'order_team' => $request->order_team,
+                'name'        => $request->name,
+                'email'       => $request->email,
+                'position'    => $request->position,
+                'order_team'  => $request->order_team,
                 'short_descp' => $request->short_descp,
-                'facebook' => $request->facebook,
-                'whatup' => $request->whatup,
-                'phone' => $request->phone,
-                'status' => $request->status,
+                'facebook'    => $request->facebook,
+                'whatup'      => $request->whatup,
+                'phone'       => $request->phone,
+                'status'      => $request->status,
 
-                'image' => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $banner->image,
+                'image'       => $globalFunImg['status'] == 1 ? $globalFunImg['file_name'] : $banner->image,
 
             ]);
         }
@@ -170,7 +169,7 @@ class TeamController extends Controller
 
     public function updateStatusTeam(Request $request, $id)
     {
-        $offer = Team::findOrFail($id);
+        $offer         = Team::findOrFail($id);
         $offer->status = $request->input('status');
         $offer->save();
 
@@ -183,7 +182,7 @@ class TeamController extends Controller
             'order_team' => 'required|integer',
         ]);
 
-        $item = Team::find($request->id);
+        $item             = Team::find($request->id);
         $item->order_team = $request->order_team;
         $item->save();
 

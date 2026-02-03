@@ -139,7 +139,11 @@
                     @foreach ($items as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>Image</td>
+                            <td>
+                                <img class=""
+                                    src="{{ !empty($item->image) ? url('storage/vision/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
+                                    height="60" width="60" alt="">
+                            </td>
 
                             <td>
                                 <h6>{!! $item->vision !!}</h6>
@@ -156,13 +160,13 @@
 
                             <td>
                                 {{-- @if (Auth::guard('admin')->user()->can('edit.banner')) --}}
-                                    <a href="{{ route('admin.vision.edit', $item->id) }}" class="text-primary">
-                                        <i class="fa-solid fa-pencil text-primary"></i>
-                                    </a>
+                                <a href="{{ route('admin.vision.edit', $item->id) }}" class="text-primary">
+                                    <i class="fa-solid fa-pencil text-primary"></i>
+                                </a>
                                 {{-- @endif
 
                                 @if (Auth::guard('admin')->user()->can('delete.banner')) --}}
-                                    {{-- <a href="{{ route('admin.vision.destroy', $item->id) }}" class="delete">
+                                {{-- <a href="{{ route('admin.vision.destroy', $item->id) }}" class="delete">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a> --}}
                                 {{-- @endif --}}

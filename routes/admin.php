@@ -81,27 +81,27 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         [
             // Shipping All Admin Controller
 
-            'banner' => BannerController::class,
-            'officer' => OfficersController::class,
-            'rating' => RatingController::class,
-            'team' => TeamController::class,
+            'banner'        => BannerController::class,
+            'officer'       => OfficersController::class,
+            'rating'        => RatingController::class,
+            'team'          => TeamController::class,
 
-            'job' => EmployeeJobController::class,
-            'about' => AboutController::class,
-            'legal' => LegalController::class,
-            'vision' => VisionController::class,
-            'mision' => MisionController::class,
+            'job'           => EmployeeJobController::class,
+            'about'         => AboutController::class,
+            'legal'         => LegalController::class,
+            'vision'        => VisionController::class,
+            'mision'        => MisionController::class,
 
-            'policy' => PolicyController::class,
-            'service' => ServiceController::class,
-            'ceo_message' => CeoMessageController::class,
+            'policy'        => PolicyController::class,
+            'service'       => ServiceController::class,
+            'ceo_message'   => CeoMessageController::class,
 
-            'choose' => ChooseController::class,
-            'client' => ClientController::class,
-            'principle' => PrincipleController::class,
+            'choose'        => ChooseController::class,
+            'client'        => ClientController::class,
+            'principle'     => PrincipleController::class,
             'admin-contact' => AdminContactController::class,
 
-            'sent-message' => SentMessageController::class,
+            'sent-message'  => SentMessageController::class,
 
         ],
 

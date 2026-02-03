@@ -57,7 +57,6 @@
 
                         <h3 style="text-align: justify;">{!! optional($vission)->vision !!}</h3>
 
-
                     </div>
 
                 </div>
@@ -66,8 +65,8 @@
 
                     <div class="">
 
-                        <img src="{{ asset('frontend/img/Our-Vision-Banner_AZS.jpg') }}" style="width:600px;height:400px"
-                            alt="">
+                        <img src="{{ !empty($vission->image) ? url('storage/vision/' . $vission->image) : 'https://ui-avatars.com/api/?name=' . urlencode($vission->name) }}"
+                            style="width:600px;height:400px" alt="">
 
                     </div>
 

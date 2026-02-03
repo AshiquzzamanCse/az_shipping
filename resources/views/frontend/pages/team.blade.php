@@ -30,7 +30,7 @@
                         <div class="team-card">
                             <div class="team-image">
                                 <img src="{{ !empty($team->image) ? url('storage/team/' . $team->image) : 'https://ui-avatars.com/api/?name=' . urlencode($team->name) }}"
-                                    alt="image">
+                                    alt="image" style="width:100%;height:430px">
                                 <div class="caption">
                                     <ul>
                                         <li>
@@ -84,6 +84,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection
