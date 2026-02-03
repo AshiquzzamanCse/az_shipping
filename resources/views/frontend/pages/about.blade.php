@@ -42,17 +42,33 @@
                             <p>Nor again is there anyone who loves or pursues or desires to.</p>
                         </div>
                     </div> --}}
+
                 </div>
-                <div class="col-lg-6">
-                    <div class="safe-image">
-                        <img src="{{ !empty($about->image) ? url('storage/' . $about->image) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($about)->title) }}" alt="image">
-                    </div>
+
+                <div class="col-lg-3">
+
+
+
+                    <img src="{{ !empty($about->image) ? url('storage/' . $about->image) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($about)->title) }}"
+                        alt="image">
+
                 </div>
+
+                <div class="col-lg-3">
+
+                    <img src="{{ !empty($about->image_one) ? url('storage/' . $about->image_one) : 'https://ui-avatars.com/api/?name=' . urlencode(optional($about)->title) }}"
+                        alt="image">
+
+
+                </div>
+
+
+
             </div>
         </div>
     </div>
     <!-- End About Safe Area -->
 
-    
+
 
 @endsection

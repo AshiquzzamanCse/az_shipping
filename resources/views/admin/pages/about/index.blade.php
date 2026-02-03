@@ -104,7 +104,7 @@
             <div class="card-title"></div>
             <div class="card-toolbar">
 
-                <a href="{{ route('admin.about.create') }}" class="btn btn-light-danger">
+                {{-- <a href="{{ route('admin.about.create') }}" class="btn btn-light-danger">
                     <span class="svg-icon svg-icon-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -117,7 +117,7 @@
                         </svg>
                     </span>
                     About
-                </a>
+                </a> --}}
 
                 <a href="{{ route('admin.legal.index') }}" class="btn btn-light-primary ms-3">
                     <span class="svg-icon svg-icon-3">
@@ -232,11 +232,11 @@
                                     </a>
                                 {{-- @endif --}}
 
-                                @if (Auth::guard('admin')->user()->can('delete.about'))
+                                {{-- @if (Auth::guard('admin')->user()->can('delete.about')) --}}
                                     {{-- <a href="{{ route('admin.about.destroy', $item->id) }}" class="delete">
                                         <i class="fa-solid fa-trash text-danger"></i>
                                     </a> --}}
-                                @endif
+                                {{-- @endif --}}
 
                             </td>
                         </tr>

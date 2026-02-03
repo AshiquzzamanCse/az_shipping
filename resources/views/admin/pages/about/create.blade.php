@@ -102,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        {{-- <div class="col-4 mb-3">
                             <div>
                                 <label for="image_two" class="mb-2">Image Two</label>
                                 <p class="text-danger">Image Support Format jpeg, png, jpg, gif</p>
@@ -115,7 +115,7 @@
                                 <img id="imageTwoPreview" class="img-preview"
                                     style="display:none; width: 100px; height: 100px; object-fit: cover; margin-top: 10px;" />
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-12 mb-3 mt-4">
                             <button type="submit"
