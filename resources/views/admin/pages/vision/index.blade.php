@@ -128,7 +128,7 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="2%">No</th>
-                        <th width="4%">Image</th>
+                        {{-- <th width="4%">Image</th> --}}
                         <th width="25%">Vision</th>
                         <th width="2%">Status</th>
                         <th width="2%">Actions</th>
@@ -139,11 +139,14 @@
                     @foreach ($items as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>
+
+                            {{-- <td>
                                 <img class=""
                                     src="{{ !empty($item->image) ? url('storage/vision/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
-                                    height="60" width="60" alt="">
-                            </td>
+                                    height="60" width="60" alt=""> 
+
+                                    <p>image</p>
+                            </td> --}}
 
                             <td>
                                 <h6>{!! $item->vision !!}</h6>

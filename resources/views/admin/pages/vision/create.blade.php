@@ -48,7 +48,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        {{-- <div class="col-4 mb-3">
                             <div class="form-group">
                                 <label for="" class="mb-2">Image</label>
                                 <input type="file" name="image" accept="image/*"
@@ -58,7 +58,7 @@
                                 @enderror
                                 <p class="text-danger">Image Size: width:600px;height:400px</p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-12 mb-3">
                             <div class="form-group">
