@@ -13,7 +13,7 @@ Route::controller(HomeController::class)->group(function () {
 
     //all Team
     Route::get('/team', 'allTeam')->name('all.team');
-    
+
     //All Job
     Route::get('/job', 'allJob')->name('all.job');
     Route::get('/job-details/{id}', 'jobDetails')->name('view.job.details');
