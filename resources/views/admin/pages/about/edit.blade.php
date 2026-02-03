@@ -110,7 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4 mb-3">
+                        {{-- <div class="col-4 mb-3">
                             <div>
                                 <label for="image_two" class="mb-2">Image Two</label>
                                 <p class="text-danger">Image Support Format jpeg, png, jpg, gif</p>
@@ -126,7 +126,7 @@
                                     height="80" width="80" class="img-preview mt-3"
                                     alt="{{ $about->title }}">
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-12 mb-3 mt-4">
                             <button type="submit"
