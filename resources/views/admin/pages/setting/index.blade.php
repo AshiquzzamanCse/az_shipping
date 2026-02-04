@@ -140,31 +140,31 @@
 
                     {{-- Maintenance Mode --}}
 
-                    {{-- @if (Auth::guard('admin')->user()->can('delete.banner'))
+                    @if (Auth::guard('admin')->user()->can('maintenance_mode'))
 
-                    @endif --}}
+                        <div class="col-lg-3 mb-7">
 
-                    <div class="col-lg-3 mb-7">
+                            <x-metronic.label for="maintenance_mode" class="col-form-label fw-bold fs-6">
+                                {{ __('Select a maintenance mode ') }}</x-metronic.label>
 
-                        <x-metronic.label for="maintenance_mode" class="col-form-label fw-bold fs-6">
-                            {{ __('Select a maintenance mode ') }}</x-metronic.label>
+                            <x-metronic.select-option id="maintenance_mode" name="maintenance_mode"
+                                data-hide-search="true" data-placeholder="Select an option">
 
-                        <x-metronic.select-option id="maintenance_mode" name="maintenance_mode"
-                            data-hide-search="true" data-placeholder="Select an option">
+                                <option></option>
 
-                            <option></option>
+                                <option value="1"
+                                    {{ optional($setting->first())->maintenance_mode == 1 ? 'selected' : '' }}>Active
+                                </option>
 
-                            <option value="1"
-                                {{ optional($setting->first())->maintenance_mode == 1 ? 'selected' : '' }}>Active
-                            </option>
+                                <option value="0"
+                                    {{ optional($setting->first())->maintenance_mode == 0 ? 'selected' : '' }}>
+                                    Inactive</option>
 
-                            <option value="0"
-                                {{ optional($setting->first())->maintenance_mode == 0 ? 'selected' : '' }}>
-                                Inactive</option>
+                            </x-metronic.select-option>
 
-                        </x-metronic.select-option>
-
-                    </div>
+                        </div>
+                        
+                    @endif
 
                     {{-- Maintenance Mode --}}
 
