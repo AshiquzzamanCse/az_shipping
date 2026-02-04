@@ -145,7 +145,6 @@
                                     src="{{ !empty($item->image) ? url('storage/vision/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
                                     height="60" width="60" alt=""> 
 
-                                    <p>image</p>
                             </td>
 
                             <td>
