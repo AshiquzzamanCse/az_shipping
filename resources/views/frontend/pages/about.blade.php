@@ -23,7 +23,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-safe-text">
-                        <span style="color: #f21860 !important;" class="fs-1">About Us</span>
+                        <span style="color: #f21860 !important;" class="fs-2">About Us</span>
 
                         <h2>{{ optional($about)->title }}</h2>
                         <p>{!! optional($about)->long_descp !!}</p>
