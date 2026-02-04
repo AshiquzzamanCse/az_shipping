@@ -119,21 +119,25 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     //All Status
     Route::put('banner/status/{id}', [BannerController::class, 'updateStatusBanner'])->name('banner.status.update');
     Route::put('team/status/{id}', [TeamController::class, 'updateStatusTeam'])->name('team.status.update');
+
     Route::put('job/status/{id}', [EmployeeJobController::class, 'updateStatusJob'])->name('job.status.update');
     Route::put('legal/status/{id}', [LegalController::class, 'updateStatusLegal'])->name('legal.status.update');
     Route::put('vision/status/{id}', [VisionController::class, 'updateStatusVision'])->name('vision.status.update');
+
     Route::put('mision/status/{id}', [MisionController::class, 'updateStatusMision'])->name('mision.status.update');
     Route::put('policy/status/{id}', [PolicyController::class, 'updateStatusPolicy'])->name('policy.status.update');
     Route::put('service/status/{id}', [ServiceController::class, 'updateStatusService'])->name('service.status.update');
+
     Route::put('ceo/status/{id}', [CeoMessageController::class, 'updateStatusCEO'])->name('ceo.status.update');
     Route::put('choose/status/{id}', [ChooseController::class, 'updateStatusChoose'])->name('choose.status.update');
     Route::put('client/status/{id}', [ClientController::class, 'updateStatusClient'])->name('client.status.update');
-    Route::put('principle/status/{id}', [PrincipleController::class, 'updateStatusPrinciple'])->name('principle.status.update');
 
+    Route::put('principle/status/{id}', [PrincipleController::class, 'updateStatusPrinciple'])->name('principle.status.update');
     Route::put('sent-message/status/{id}', [SentMessageController::class, 'updateStatusSentMessage']);;
 
     //Apply Post
     Route::get('/apply/post', [AdminController::class, 'applyPost'])->name('apply.post');
+    
 });
 
 Route::middleware(['auth:admin'])->group(function () {
