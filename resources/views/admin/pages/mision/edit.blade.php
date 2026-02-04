@@ -35,7 +35,7 @@
 
 
 
-                        <div class="col-4 mb-3">
+                        <div class="col-2 mb-3">
 
                             <div class="form-group">
                                 <label for="" class="mb-2">Status</label>
@@ -55,6 +55,26 @@
                                 @enderror
                             </div>
 
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <div class="form-group">
+                                <label for="" class="mb-2">Image</label>
+                                <input type="file" name="image" accept="image/*"
+                                    class="form-control form-control-sm">
+                                <b class="text-danger">Image Size: width:380px;height:400px</b>
+
+                            </div>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <div class="form-group">
+
+                                <img class="mt-4"
+                                    src="{{ !empty($mision->image) ? url('storage/mision/' . $mision->image) : 'https://ui-avatars.com/api/?name=' . urlencode($mision->name) }}" height="80" width="80" alt="">
+
+
+                            </div>
                         </div>
 
 

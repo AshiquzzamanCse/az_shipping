@@ -139,7 +139,11 @@
                     @foreach ($items as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>Image</td>
+                            <td>
+                                <img class=""
+                                    src="{{ !empty($item->image) ? url('storage/mision/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
+                                    height="60" width="60" alt=""> 
+                            </td>
 
                             <td>
                                 <h6>{!! $item->mision !!}</h6>
