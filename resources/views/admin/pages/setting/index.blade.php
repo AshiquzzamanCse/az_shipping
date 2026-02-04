@@ -141,7 +141,6 @@
                     {{-- Maintenance Mode --}}
 
                     @if (Auth::guard('admin')->user()->can('maintenance_mode'))
-
                         <div class="col-lg-3 mb-7">
 
                             <x-metronic.label for="maintenance_mode" class="col-form-label fw-bold fs-6">
@@ -163,7 +162,6 @@
                             </x-metronic.select-option>
 
                         </div>
-                        
                     @endif
 
                     {{-- Maintenance Mode --}}
