@@ -127,7 +127,7 @@
                 <thead class="bg-dark text-light">
                     <tr>
                         <th width="5%">No</th>
-                        <th width="10%">Rank Name</th>
+                        {{-- <th width="10%">Rank Name</th> --}}
                         <th width="10%">Name</th>
                         <th width="10%">Email</th>
                         <th width="10%">Phone</th>
@@ -143,9 +143,9 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
-                            <td>
+                            {{-- <td>
                                 <h6>{{ $item->jobName->rank }}</h6>
-                            </td>
+                            </td> --}}
 
                             <td>
                                 <h6>{{ $item->name }}</h6>
