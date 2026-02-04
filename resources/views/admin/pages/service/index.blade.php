@@ -161,11 +161,11 @@
 
 
                             <td>
-                                @if (Auth::guard('admin')->user()->can('edit.service'))
+                                {{-- @if (Auth::guard('admin')->user()->can('edit.service')) --}}
                                     <a href="{{ route('admin.service.edit', $item->id) }}" class="text-primary">
                                         <i class="fa-solid fa-pencil text-primary"></i>
                                     </a>
-                                @endif
+                                {{-- @endif --}}
 
                                 @if (Auth::guard('admin')->user()->can('delete.service'))
                                     <a href="{{ route('admin.service.destroy', $item->id) }}" class="delete">

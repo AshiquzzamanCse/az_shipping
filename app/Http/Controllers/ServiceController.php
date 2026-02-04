@@ -35,9 +35,10 @@ class ServiceController extends Controller
             'status' => 'required|in:active,inactive',
             'name' => 'required|string|max:255',
             'short_descp' => 'required|string|max:300',
-            'thumbnail_image' => 'required|image|max:2048', // Max size 2MB
-            'banner_top_image' => 'required|image|max:2048', // Max size 2MB
-            'banner_center_image' => 'required|image|max:2048', // Max size 2MB
+
+            'thumbnail_image' => 'nullable|image|max:2048', // Max size 2MB
+            'banner_top_image' => 'nullable|image|max:2048', // Max size 2MB
+            'banner_center_image' => 'nullable|image|max:2048', // Max size 2MB
         ]);
 
         // Create a new About instance
@@ -97,6 +98,7 @@ class ServiceController extends Controller
             'status' => 'required|in:active,inactive',
             'name' => 'required|string|max:255',
             'short_descp' => 'required|string|max:500',
+            
             'thumbnail_image' => 'nullable|image|max:2048',
             'banner_top_image' => 'nullable|image|max:2048', // Max size 2MB
             'banner_center_image' => 'nullable|image|max:2048', // Max size 2MB // Allow null for updating

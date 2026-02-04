@@ -139,12 +139,11 @@
     </div>
 
     @push('scripts')
-    
         <script>
             function previewImage(event, previewId, errorId) {
                 const file = event.target.files[0];
                 const maxWidth = 760;
-                const maxHeight = 430;
+                const maxHeight = 280;
 
                 if (file) {
                     const img = new Image();
@@ -153,7 +152,7 @@
                     img.onload = function() {
                         if (img.width !== maxWidth || img.height !== maxHeight) {
                             document.getElementById(previewId).style.display = 'none';
-                            document.getElementById(errorId).innerText = 'Image size must be 760x430 pixels.';
+                            document.getElementById(errorId).innerText = 'Image size must be 760x280 pixels.';
                             document.getElementById(errorId).style.display = 'block';
                             event.target.value = ''; // Clear the input
                         } else {
