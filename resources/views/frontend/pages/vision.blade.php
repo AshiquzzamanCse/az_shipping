@@ -28,8 +28,11 @@
 
                     <div class="">
 
-                        <img src="{{ asset('frontend/img/mision_image.jpeg') }}" style="width:3800px;height:400px"
-                            alt="">
+                        <img src="{{ !empty($mission->image) ? url('storage/mision/' . $mission->image) : 'https://ui-avatars.com/api/?name=' . urlencode($mission->name) }}"
+                            style="width:380px;height:400px" alt="">
+
+                        {{-- <img src="{{ asset('frontend/img/mision_image.jpeg') }}" style="width:3800px;height:400px"
+                            alt=""> --}}
 
                     </div>
 
