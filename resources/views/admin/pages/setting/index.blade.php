@@ -139,6 +139,11 @@
                     </div>
 
                     {{-- Maintenance Mode --}}
+
+                    {{-- @if (Auth::guard('admin')->user()->can('delete.banner'))
+
+                    @endif --}}
+
                     <div class="col-lg-3 mb-7">
 
                         <x-metronic.label for="maintenance_mode" class="col-form-label fw-bold fs-6">
@@ -160,6 +165,7 @@
                         </x-metronic.select-option>
 
                     </div>
+
                     {{-- Maintenance Mode --}}
 
 
