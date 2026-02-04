@@ -72,12 +72,12 @@
 
                                         </td>
                                         <td style="width: 100px;">
-                                            <a href="{{ route('admin.edit.roles', $item->id) }}" class=""
-                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
+                                            {{-- <a href="{{ route('admin.edit.roles', $item->id) }}" class=""
+                                                title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a> --}}
 
-                                            <a href="{{ route('admin.delete.roles', $item->id) }}" class=""
+                                            {{-- <a href="{{ route('admin.delete.roles', $item->id) }}" class=""
                                                 id="delete" title="Delete"><i
-                                                    class="bi bi-trash fs-3 text-danger"></i></a>
+                                                    class="bi bi-trash fs-3 text-danger"></i></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
