@@ -17,7 +17,7 @@
     <!-- End Page banner Area -->
 
 
-    <div class="single-services-area ptb-100">
+    <div class="single-services-area pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -30,14 +30,16 @@
 
                         <h2>{{ $serviceItem->name }}</h2>
 
-                        <p>{{ $serviceItem->short_descp }}</p>
+                        <p style="text-align: justify">{{ $serviceItem->short_descp }}</p>
 
                         <div class="image">
+
                             <img src="{{ !empty($serviceItem->banner_top_image) ? url('storage/' . $serviceItem->banner_top_image) : 'https://ui-avatars.com/api/?name=' . urlencode('SS') }}"
-                                alt="image">
+                                alt="ashik" style="cursor: pointer; height: 280px; width: 100%; object-fit: cover;">
+
                         </div>
 
-                        <p>{!! $serviceItem->description !!}</p>
+                        <p style="text-align: justify">{!! $serviceItem->description !!}</p>
                     </div>
                 </div>
 
