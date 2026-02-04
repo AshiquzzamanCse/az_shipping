@@ -28,7 +28,7 @@
 
                     <div class="">
 
-                        <img src="{{ asset('frontend/img/mision_image.jpg') }}" style="width:600px;height:400px"
+                        <img src="{{ asset('frontend/img/mision_image.jpeg') }}" style="width:600px;height:400px"
                             alt="">
 
                     </div>
@@ -68,7 +68,7 @@
                         {{-- <img src="{{ !empty($vission->image) ? url('storage/vision/' . $vission->image) : 'https://ui-avatars.com/api/?name=' . urlencode($vission->name) }}"
                             style="width:600px;height:400px" alt=""> --}}
 
-                        <img src="{{ asset('frontend/img/vision_image.jpg') }}" style="width:600px;height:400px"
+                        <img src="{{ asset('frontend/img/vision_image.jpeg') }}" style="width:600px;height:400px"
                             alt="">
 
                     </div>
