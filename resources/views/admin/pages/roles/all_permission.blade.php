@@ -21,8 +21,8 @@
 
                         <!--begin::Add product-->
 
-                        <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#addModal">Add Permission</a>
+                        {{-- <a href="" class="btn btn-light-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#addModal">Add Permission</a> --}}
 
                         <a href="{{ route('all.roles.permission') }}" class="btn btn-light-info btn-sm">Role In
                             Permission</a>
