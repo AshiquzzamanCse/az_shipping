@@ -17,7 +17,7 @@
     <!-- End Page banner Area -->
 
 
-    <div class="single-services-area pt-5">
+    <div class="single-services-area pt-5 pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
