@@ -60,14 +60,19 @@
 </head>
 
 <body>
+
     <div class="container">
+
         <span>Come Back</span>
         <p>Site Maintenance Mode</p>
+
         <div id="timer"></div>
+        <div id="message"></div>
         <div id="current-date"></div>
+
     </div>
 
-    <script>
+    {{-- <script>
         function updateTimer() {
             const future = Date.parse("Nov 6, 2024 20:00:00");
             const now = new Date();
@@ -106,7 +111,85 @@
         setInterval(updateTimer, 1000);
         updateTimer(); // Call once to initialize immediately
         updateCurrentDate(); // Call once to initialize current date
+    </script> --}}
+
+    <script>
+        /* ===== SET TIME ONLY ON FIRST LOAD ===== */
+        const DEFAULT_TIME = {
+            days: 1,
+            hours: 11,
+            minutes: 52,
+            seconds: 40
+        };
+        /* ===================================== */
+
+        let totalSeconds;
+        let interval;
+
+        /* INIT */
+        if (localStorage.getItem("countdownSeconds")) {
+            totalSeconds = parseInt(localStorage.getItem("countdownSeconds"));
+        } else {
+            totalSeconds =
+                DEFAULT_TIME.days * 86400 +
+                DEFAULT_TIME.hours * 3600 +
+                DEFAULT_TIME.minutes * 60 +
+                DEFAULT_TIME.seconds;
+
+            localStorage.setItem("countdownSeconds", totalSeconds);
+        }
+
+        function updateTimer() {
+            if (totalSeconds <= 0) {
+                clearInterval(interval);
+                localStorage.removeItem("countdownSeconds");
+
+                document.getElementById("timer").innerHTML =
+                    `<div>0<span>Days</span></div>
+             <div>0<span>Hours</span></div>
+             <div>0<span>Minutes</span></div>
+             <div>0<span>Seconds</span></div>`;
+
+                document.getElementById("message").innerText =
+                    "Please wait for site launch 🚀";
+                return;
+            }
+
+            const d = Math.floor(totalSeconds / 86400);
+            const h = Math.floor((totalSeconds % 86400) / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+
+            document.getElementById("timer").innerHTML =
+                `<div>${d}<span>Days</span></div>
+         <div>${h}<span>Hours</span></div>
+         <div>${m}<span>Minutes</span></div>
+         <div>${s}<span>Seconds</span></div>`;
+
+            totalSeconds--;
+            localStorage.setItem("countdownSeconds", totalSeconds);
+        }
+
+        /* CURRENT DATE */
+        function updateCurrentDate() {
+            const now = new Date();
+            document.getElementById("current-date").innerText =
+                now.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) + ' , ' + now.toLocaleTimeString('en-US');
+        }
+
+        /* AUTO START */
+        updateTimer();
+        interval = setInterval(updateTimer, 1000);
+        setInterval(updateCurrentDate, 1000);
+        updateCurrentDate();
     </script>
+
+
 </body>
 
 </html>

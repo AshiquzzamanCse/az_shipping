@@ -44,13 +44,16 @@ class HomeController extends Controller
         $adminStatus = Setting::where('maintenance_mode', 'active')->exists();
 
         if (!$adminStatus) {
+
             $banners = Banner::where('status', 'active')->latest()->get();
             $services = Service::where('status', 'active')->latest()->get();
             $about = About::latest('id')->first();
             $clients = Client::where('status', 'active')->latest()->get();
 
             return view('frontend.pages.home', compact('banners', 'about', 'services', 'clients'));
-        } else {
+        } 
+        
+        else {
             // Handle the case when the admin panel is active (site in maintenance mode)
             return response()->view('errors.site_problem', );
         }
