@@ -2,7 +2,7 @@
     <!--begin::Content-->
 
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        
+
 
         <!--begin::Post-->
         <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -39,7 +39,7 @@
                     <div class="card-body pt-0">
                         <!--begin::Table-->
                         <table id="kt_datatable_example_5"
-                        class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
+                            class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
 
                             <!--begin::Table head-->
                             <thead class="bg-dark text-light">
@@ -72,12 +72,13 @@
 
                                         </td>
                                         <td style="width: 100px;">
-                                            <a href="{{ route('admin.edit.roles', $item->id) }}" class=""
+
+                                            {{-- <a href="{{ route('admin.edit.roles', $item->id) }}" class=""
                                                 title="Edit"><i class="bi bi-pencil-square fs-3 text-primary"></i></a>
 
                                             <a href="{{ route('admin.delete.roles', $item->id) }}" class=""
                                                 id="delete" title="Delete"><i
-                                                    class="bi bi-trash fs-3 text-danger"></i></a>
+                                                    class="bi bi-trash fs-3 text-danger"></i></a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
