@@ -140,7 +140,7 @@
 
                     {{-- Maintenance Mode --}}
 
-                    @if (Auth::guard('admin')->user()->can('maintenance_mode'))
+                    @if (Auth::guard('admin')->user()->can('maintenance.mode'))
                         <div class="col-lg-3 mb-7">
 
                             <x-metronic.label for="maintenance_mode" class="col-form-label fw-bold fs-6">
