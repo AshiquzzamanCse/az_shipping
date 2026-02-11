@@ -236,8 +236,9 @@ class HomeController extends Controller
             $admins = Admin::where('mail_status', 'mail')->get();
 
             foreach ($admins as $admin) {
-                Mail::to($admin->email)
-                    ->send(new JobApplyMail($application));
+                // Mail::to($admin->email)
+                //     ->send(new JobApplyMail($application));
+                    Notification::send($admin, new JobApplyNotification($application));
             }
 
             DB::commit();
