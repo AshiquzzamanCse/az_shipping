@@ -29,7 +29,7 @@ Route::post('/contact_us', [HomeController::class, 'contactStore'])->name('conta
 //legal Paper
 Route::get('/legal-papers', [HomeController::class, 'legalPapers'])->name('legal.papers');
 
-//vision
+//Mision-vision
 Route::get('/mission-vision', [HomeController::class, 'vision'])->name('vision');
 
 //About

@@ -1,6 +1,14 @@
 @extends('frontend.master')
 @section('content')
-    <div class="page-banner bg-3">
+    <style>
+        @media (max-width: 767.98px) {
+            .team-area {
+                padding-top: 90px !important;
+            }
+        }
+    </style>
+
+    <div class="page-banner bg-3 d-none d-lg-block">
         <div class="d-table">
             <div class="d-table-cell">
                 {{-- <div class="container">

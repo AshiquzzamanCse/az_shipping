@@ -73,7 +73,7 @@ class HomeController extends Controller
         return view('frontend.pages.legal_papers', compact('legals'));
     }
 
-    //vision
+    //Mission-Vision
     public function vision()
     {
         $mission = Mision::where('status', 'active')->latest('id')->first();

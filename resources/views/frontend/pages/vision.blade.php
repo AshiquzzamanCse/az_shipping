@@ -4,8 +4,16 @@
 
 @section('content')
 
+    <style>
+        @media (max-width: 767.98px) {
+            .about-info-area {
+                padding-top: 150px !important;
+            }
+        }
+    </style>
+
     <!-- Page banner Area -->
-    <div class="page-banner bg-3">
+    <div class="page-banner bg-3 d-none d-lg-block">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
@@ -18,7 +26,7 @@
 
 
     <!-- Vission Info -->
-    <div class="about-info-area pb-70 pt-100">
+    <div class="about-info-area pb-70 pt-5">
         <div class="container">
 
             {{-- MIssion  --}}
