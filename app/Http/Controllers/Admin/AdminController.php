@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -22,8 +21,8 @@ class AdminController extends Controller
         $visitCount = Visit::select('ip_address')->distinct()->count();
         // $items = ApplyPost::orderBy('job_id')->get();
         $items = ApplyPost::latest()->orderBy('job_id')->get();
-        $jobs = Job::latest('id')->limit(5)->get();
-        $team = Team::latest()->get();
+        $jobs  = Job::latest('id')->limit(5)->get();
+        $team  = Team::latest()->get();
 
         return view('admin/dashboard', compact('visitCount', 'items', 'jobs', 'team'));
     }
@@ -43,9 +42,9 @@ class AdminController extends Controller
     {
         // Define validation rules
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admins,email',
-            'phone' => 'required|string|max:20',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:admins,email',
+            'phone'    => 'required|string|max:20',
             'password' => [
                 'required',
                 'string',
@@ -55,30 +54,30 @@ class AdminController extends Controller
                     ->numbers()
                     ->symbols(),
             ],
-            'role' => 'required|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
+            'role'     => 'required|string|max:255',
+            'address'  => 'nullable|string|max:255',
+            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
         ]);
 
         // Handle file upload if an image is present
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
+            $image     = $request->file('image');
             $imagePath = $image->store('public/images'); // Store the file in 'storage/app/public/images'
-            $imageName = basename($imagePath); // Extract the image filename
+            $imageName = basename($imagePath);           // Extract the image filename
         } else {
             $imageName = null; // Or handle a default image if needed
         }
         //    dd($request->input('role'));
 
         // Create a new admin record
-        $admin = new Admin();
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-        $admin->phone = $request->input('phone');
+        $admin           = new Admin();
+        $admin->name     = $request->input('name');
+        $admin->email    = $request->input('email');
+        $admin->phone    = $request->input('phone');
         $admin->password = Hash::make($request->input('password'));
-        $admin->role = $request->input('role');
-        $admin->address = $request->input('address');
-        $admin->image = $imageName; // Store the image filename in the database
+        $admin->role     = $request->input('role');
+        $admin->address  = $request->input('address');
+        $admin->image    = $imageName; // Store the image filename in the database
         $admin->save();
 
         // Redirect or respond with a success message
@@ -100,12 +99,12 @@ class AdminController extends Controller
 
         // Validate the request data
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admins,email,' . $id,
-            'phone' => 'required|string|max:20',
-            'role' => 'required|string|max:255',
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|unique:admins,email,' . $id,
+            'phone'   => 'required|string|max:20',
+            'role'    => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
+            'image'   => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation rules
         ]);
         // dd($request->input('role'));
         // Handle file upload if an image is present
@@ -116,20 +115,20 @@ class AdminController extends Controller
             }
 
             // Store the new image
-            $image = $request->file('image');
+            $image     = $request->file('image');
             $imagePath = $image->store('public/images'); // Store the file in 'storage/app/public/images'
-            $imageName = basename($imagePath); // Extract the image filename
+            $imageName = basename($imagePath);           // Extract the image filename
         } else {
             $imageName = $admin->image; // Keep the existing image if no new image is uploaded
         }
 
         // Update the admin record
-        $admin->name = $request->input('name');
-        $admin->email = $request->input('email');
-        $admin->phone = $request->input('phone');
-        $admin->role = $request->input('role');
+        $admin->name    = $request->input('name');
+        $admin->email   = $request->input('email');
+        $admin->phone   = $request->input('phone');
+        $admin->role    = $request->input('role');
         $admin->address = $request->input('address');
-        $admin->image = $imageName; // Update the image filename in the database
+        $admin->image   = $imageName; // Update the image filename in the database
         $admin->save();
 
         // Redirect or respond with a success message
@@ -159,7 +158,7 @@ class AdminController extends Controller
     public function downloadAttachment($id)
     {
         $application = ApplyPost::findOrFail($id);
-        $filePath = storage_path('app/public/attachments/' . $application->attachment);
+        $filePath    = storage_path('app/public/attachments/' . $application->attachment);
 
         return response()->download($filePath);
     }
@@ -176,7 +175,7 @@ class AdminController extends Controller
         // Get the currently authenticated admin
         $admin = Auth::guard('admin')->user();
 
-        // Count unread notifications (notifications where read_at is null)
+                                                        // Count unread notifications (notifications where read_at is null)
         $ncount = $admin->unreadNotifications->count(); // Get the count of unread notifications
 
         // Return the view with the unread count
