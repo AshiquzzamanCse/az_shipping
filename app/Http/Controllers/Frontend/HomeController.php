@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ContactMessageReceived;
 use App\Models\About;
 use App\Models\Admin;
 use App\Models\ApplyPost;
@@ -21,9 +20,7 @@ use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Vision;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -238,54 +235,56 @@ class HomeController extends Controller
         // }
 
         // Start a database transaction
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
-        try {
-                                 // Generate a unique message code
-            $typePrefix = 'MSG'; // Adjust this as needed
-            $today      = date('dmy');
-            $lastCode   = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
-                ->orderBy('id', 'desc')
-                ->first();
+                             // try {
+                             // Generate a unique message code
+        $typePrefix = 'MSG'; // Adjust this as needed
+        $today      = date('dmy');
+        $lastCode   = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
+            ->orderBy('id', 'desc')
+            ->first();
 
-            $newNumber = $lastCode ? (int) explode('-', $lastCode->code)[2] + 1 : 1;
-            $code      = $typePrefix . '-' . $today . '-' . $newNumber;
+        $newNumber = $lastCode ? (int) explode('-', $lastCode->code)[2] + 1 : 1;
+        $code      = $typePrefix . '-' . $today . '-' . $newNumber;
 
-            // Create a new contact object (but do not save it yet)
-            $contact = new Contact([
-                'code'       => $code,
-                'name'       => $request->name,
-                'email'      => $request->email,
-                'phone'      => $request->phone,
-                'subject'    => $request->subject,
-                'message'    => $request->message,
-                'ip_address' => $request->ip(),
-            ]);
+        // Create a new contact object (but do not save it yet)
+        $contact = new Contact([
+            'code'       => $code,
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'subject'    => $request->subject,
+            'message'    => $request->message,
+            'ip_address' => $request->ip(),
+        ]);
 
-            // Send an email to all admins
+        // Send an email to all admins
 
-            // $admins = Admin::where('mail_status', 'mail')->get();
-            // foreach ($admins as $admin) {
-            //     Mail::to($admin->email)->send(new ContactMessageReceived($contact));
-            // }
+        // $admins = Admin::where('mail_status', 'mail')->get();
+        // foreach ($admins as $admin) {
+        //     Mail::to($admin->email)->send(new ContactMessageReceived($contact));
+        // }
 
-            // If emails were successfully sent, store the contact record
-            $contact->save();
+        // If emails were successfully sent, store the contact record
+        $contact->save();
 
-            // Commit the transaction
-            DB::commit();
+        // Commit the transaction
+        // DB::commit();
 
-            // Redirect back with a success message
-            return redirect()->back()->with('success', 'Thank You. We have received your message. We will contact you very soon');
-        } catch (\Exception $e) {
-            // Rollback the transaction in case of an error
-            DB::rollBack();
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Thank You. We have received your message. We will contact you very soon');
+        // }
 
-            // Log the error to the log file for debugging
-            Log::error('Error sending email or saving contact: ' . $e->getMessage());
+        // catch (\Exception $e) {
+        //     // Rollback the transaction in case of an error
+        //     DB::rollBack();
 
-            // Optionally, you can redirect with an error message
-            return redirect()->back()->with('error', 'There was an issue sending the email or saving your message. Please try again later.');
-        }
+        //     // Log the error to the log file for debugging
+        //     Log::error('Error sending email or saving contact: ' . $e->getMessage());
+
+        //     // Optionally, you can redirect with an error message
+        //     return redirect()->back()->with('error', 'There was an issue sending the email or saving your message. Please try again later.');
+        // }
     }
 }

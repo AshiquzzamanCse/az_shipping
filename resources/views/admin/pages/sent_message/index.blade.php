@@ -140,9 +140,15 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
 
-                            <td><h6>{{ $item->subject }}</h6></td>
-                            <td><h6>{!! $item->message !!}</h6></td>
-                            <td><h6>{{ \Carbon\Carbon::parse($item->time)->format('d-m-Y H:i') }}</h6></td>
+                            <td>
+                                <h6>{{ $item->subject }}</h6>
+                            </td>
+                            <td>
+                                <h6>{!! $item->message !!}</h6>
+                            </td>
+                            <td>
+                                <h6>{{ \Carbon\Carbon::parse($item->time)->format('d-m-Y H:i') }}</h6>
+                            </td>
 
 
                             <td class="text-start">
@@ -156,15 +162,15 @@
 
                             <td>
                                 {{-- @if (Auth::guard('admin')->user()->can('edit.banner')) --}}
-                                    {{-- <a href="{{ route('admin.banner.edit', $item->id) }}" class="text-primary">
+                                {{-- <a href="{{ route('admin.banner.edit', $item->id) }}" class="text-primary">
                                         <i class="fa-solid fa-pencil text-primary"></i>
                                     </a> --}}
                                 {{-- @endif
 
                                 @if (Auth::guard('admin')->user()->can('delete.banner')) --}}
-                                    <a href="{{ route('admin.sent-message.destroy', $item->id) }}" class="delete">
-                                        <i class="fa-solid fa-trash text-danger"></i>
-                                    </a>
+                                <a href="{{ route('admin.sent-message.destroy', $item->id) }}" class="delete">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+                                </a>
                                 {{-- @endif --}}
 
                             </td>
