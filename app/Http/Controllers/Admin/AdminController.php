@@ -152,7 +152,7 @@ class AdminController extends Controller
 
     public function applyPost()
     {
-        $items = ApplyPost::orderBy('job_id')->get();
+        $items = ApplyPost::latest()->orderBy('job_id')->get();
         return view('admin.pages.apply.post', compact('items'));
     }
 
