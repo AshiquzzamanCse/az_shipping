@@ -235,11 +235,11 @@ class HomeController extends Controller
             // Send mail manually (not queued)
             $admins = Admin::where('mail_status', 'mail')->get();
 
-            foreach ($admins as $admin) {
-                // Mail::to($admin->email)
-                //     ->send(new JobApplyMail($application));
-                    Notification::send($admin, new JobApplyNotification($application));
-            }
+            // foreach ($admins as $admin) {
+            //     // Mail::to($admin->email)
+            //     //     ->send(new JobApplyMail($application));
+            //         Notification::send($admin, new JobApplyNotification($application));
+            // }
 
             DB::commit();
 
