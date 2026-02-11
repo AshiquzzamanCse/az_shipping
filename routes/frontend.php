@@ -47,5 +47,5 @@ Route::get('/service-details/{slug}/{id}', [HomeController::class, 'serviceDetai
 //Principle Details
 Route::get('/principle-details/{slug}/{id}', [HomeController::class, 'principleDetails'])->name('principle.details');
 
-//Client
-// Route::get('/client', [HomeController::class, 'client'])->name('client');
+//Client Review
+Route::get('/client', [HomeController::class, 'client'])->name('client');

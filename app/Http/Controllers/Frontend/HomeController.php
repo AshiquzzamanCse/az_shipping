@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
@@ -21,12 +20,10 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Vision;
-use App\Notifications\JobApplyNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -43,17 +40,15 @@ class HomeController extends Controller
 
         $adminStatus = Setting::where('maintenance_mode', 'active')->exists();
 
-        if (!$adminStatus) {
+        if (! $adminStatus) {
 
-            $banners = Banner::where('status', 'active')->latest()->get();
+            $banners  = Banner::where('status', 'active')->latest()->get();
             $services = Service::where('status', 'active')->latest()->get();
-            $about = About::latest('id')->first();
-            $clients = Client::where('status', 'active')->latest()->get();
+            $about    = About::latest('id')->first();
+            $clients  = Client::where('status', 'active')->latest()->get();
 
             return view('frontend.pages.home', compact('banners', 'about', 'services', 'clients'));
-        } 
-        
-        else {
+        } else {
             // Handle the case when the admin panel is active (site in maintenance mode)
             return response()->view('errors.site_problem', );
         }
@@ -100,7 +95,7 @@ class HomeController extends Controller
     public function serviceDetails($slug)
     {
         $serviceItem = Service::where('slug', $slug)->firstOrFail();
-        $services = Service::where('status', 'active')->latest()->get();
+        $services    = Service::where('status', 'active')->latest()->get();
 
         return view('frontend.pages.service_details', compact('serviceItem', 'services'));
     }
@@ -109,7 +104,7 @@ class HomeController extends Controller
     public function principleDetails($slug)
     {
         $principleItem = Principle::where('slug', $slug)->firstOrFail();
-        $services = Service::where('status', 'active')->latest()->get();
+        $services      = Service::where('status', 'active')->latest()->get();
 
         return view('frontend.pages.principle_details', compact('principleItem', 'services'));
     }
@@ -139,7 +134,7 @@ class HomeController extends Controller
     //jobApply
     public function jobApply($id)
     {
-        $job = Job::findOrfail($id);
+        $job    = Job::findOrfail($id);
         $policy = Policy::where('status', 'active')->latest('id')->first();
 
         return view('frontend.pages.job_apply', compact('job', 'policy'));
@@ -148,72 +143,117 @@ class HomeController extends Controller
     //dropCv
     public function dropCv()
     {
-        $jobs = Job::latest()->get();
+        $jobs   = Job::latest()->get();
         $policy = Policy::where('status', 'active')->latest('id')->first();
 
         return view('frontend.pages.drop_cv', compact('jobs', 'policy'));
     }
 
     //jobApplyEmployee
+
+    // public function jobApplyEmployee(Request $request)
+    // {
+    //     try {
+    //         // Validation rules
+    //         $validator = Validator::make($request->all(), [
+    //             'job_id'          => 'nullable', // Ensure job exists
+    //             'name'            => 'required|string|max:255',
+    //             'email'           => 'required|email|max:255',
+    //             'phone'           => 'required',
+    //             'passport_number' => 'required|string|max:50', // Adjust as necessary
+    //             'cdc_number'      => 'required|string|max:50', // Adjust as necessary
+    //             'nationality'     => 'required|string|max:100',
+    //             'attachment'      => 'nullable|file|mimes:pdf,doc,docx|max:2048', // File validation
+    //             'agree'           => 'required|accepted',                         // Ensure terms are accepted
+    //         ]);
+
+    //         // Check validation
+    //         if ($validator->fails()) {
+    //             return redirect()->back()
+    //                 ->withErrors($validator)
+    //                 ->withInput();
+    //         }
+
+    //         // Create a new job application
+    //         $application                  = new ApplyPost();
+    //         $application->job_id          = $request->job_id;
+    //         $application->name            = $request->name;
+    //         $application->email           = $request->email;
+    //         $application->phone           = $request->phone;
+    //         $application->passport_number = $request->passport_number;
+    //         $application->cdc_number      = $request->cdc_number;
+    //         $application->nationality     = $request->nationality;
+    //         $application->agree           = $request->agree;
+
+    //         // Handle file upload
+    //         if ($request->hasFile('attachment')) {
+    //             $file     = $request->file('attachment');
+    //             $filename = time() . '_' . $file->getClientOriginalName();
+    //             $file->storeAs('attachments', $filename, 'public');
+    //             $application->attachment = $filename;
+    //         }
+
+    //         // Save the application
+    //         $application->save();
+
+    //         // Get all admins with 'mail_status' set to 'mail'
+    //         $admins = Admin::where('mail_status', 'mail')->get();
+
+    //         foreach ($admins as $admin) {
+    //             Notification::send($admin, new JobApplyNotification($application)); // Pass the entire application
+    //         }
+
+    //         // Redirect with success message
+    //         return redirect()->back()->with('success', 'Application submitted successfully!');
+    //     } catch (\Exception $e) {
+    //         // Log the exception
+    //         Log::error('Job application failed: ' . $e->getMessage());
+
+    //         // Optionally, send an error message to the user
+    //         return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+    //     }
+    // }
+
     public function jobApplyEmployee(Request $request)
     {
+        DB::beginTransaction();
+
         try {
-            // Validation rules
-            $validator = Validator::make($request->all(), [
-                'job_id' => 'nullable', // Ensure job exists
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'phone' => 'required',
-                'passport_number' => 'required|string|max:50', // Adjust as necessary
-                'cdc_number' => 'required|string|max:50', // Adjust as necessary
-                'nationality' => 'required|string|max:100',
-                'attachment' => 'nullable|file|mimes:pdf,doc,docx|max:2048', // File validation
-                'agree' => 'required|accepted', // Ensure terms are accepted
-            ]);
 
-            // Check validation
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
-
-            // Create a new job application
             $application = new ApplyPost();
-            $application->job_id = $request->job_id;
-            $application->name = $request->name;
-            $application->email = $request->email;
-            $application->phone = $request->phone;
-            $application->passport_number = $request->passport_number;
-            $application->cdc_number = $request->cdc_number;
-            $application->nationality = $request->nationality;
-            $application->agree = $request->agree;
+            $application->fill($request->except('attachment'));
 
-            // Handle file upload
             if ($request->hasFile('attachment')) {
-                $file = $request->file('attachment');
+                $file     = $request->file('attachment');
                 $filename = time() . '_' . $file->getClientOriginalName();
                 $file->storeAs('attachments', $filename, 'public');
                 $application->attachment = $filename;
             }
 
-            // Save the application
             $application->save();
 
-            // Get all admins with 'mail_status' set to 'mail'
+            // Send mail manually (not queued)
             $admins = Admin::where('mail_status', 'mail')->get();
+
             foreach ($admins as $admin) {
-                Notification::send($admin, new JobApplyNotification($application)); // Pass the entire application
+                Mail::to($admin->email)
+                    ->send(new JobApplyMail($application));
             }
 
-            // Redirect with success message
-            return redirect()->back()->with('success', 'Application submitted successfully!');
-        } catch (\Exception $e) {
-            // Log the exception
-            Log::error('Job application failed: ' . $e->getMessage());
+            DB::commit();
 
-            // Optionally, send an error message to the user
-            return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+            return back()->with('success', 'Application submitted successfully!');
+
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            // Delete uploaded file if needed
+            if (isset($filename)) {
+                Storage::disk('public')->delete('attachments/' . $filename);
+            }
+
+            return back()->with('error', 'Mail configuration error. CV not submitted.');
         }
     }
 
@@ -228,11 +268,11 @@ class HomeController extends Controller
     {
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:150',
-            'email' => 'required|email|max:150',
-            'phone' => 'nullable|string|max:20',
-            'subject' => 'required|string',
-            'message' => 'required|string|max:1200',
+            'name'                 => 'required|string|max:150',
+            'email'                => 'required|email|max:150',
+            'phone'                => 'nullable|string|max:20',
+            'subject'              => 'required|string',
+            'message'              => 'required|string|max:1200',
             'g-recaptcha-response' => 'required|captcha', // Validate reCAPTCHA
         ]);
 
@@ -245,24 +285,24 @@ class HomeController extends Controller
         DB::beginTransaction();
 
         try {
-            // Generate a unique message code
+                                 // Generate a unique message code
             $typePrefix = 'MSG'; // Adjust this as needed
-            $today = date('dmy');
-            $lastCode = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
+            $today      = date('dmy');
+            $lastCode   = Contact::where('code', 'like', $typePrefix . '-' . $today . '%')
                 ->orderBy('id', 'desc')
                 ->first();
 
             $newNumber = $lastCode ? (int) explode('-', $lastCode->code)[2] + 1 : 1;
-            $code = $typePrefix . '-' . $today . '-' . $newNumber;
+            $code      = $typePrefix . '-' . $today . '-' . $newNumber;
 
             // Create a new contact object (but do not save it yet)
             $contact = new Contact([
-                'code' => $code,
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'subject' => $request->subject,
-                'message' => $request->message,
+                'code'       => $code,
+                'name'       => $request->name,
+                'email'      => $request->email,
+                'phone'      => $request->phone,
+                'subject'    => $request->subject,
+                'message'    => $request->message,
                 'ip_address' => $request->ip(),
             ]);
 
