@@ -20,13 +20,13 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Vision;
+use App\Notifications\JobApplyNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
-use App\Notifications\JobApplyNotification;
 
 class HomeController extends Controller
 {
