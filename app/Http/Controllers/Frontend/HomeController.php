@@ -233,9 +233,9 @@ class HomeController extends Controller
         ]);
 
         // If validation fails, redirect back with errors
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
         // Start a database transaction
         DB::beginTransaction();
@@ -263,7 +263,7 @@ class HomeController extends Controller
             ]);
 
             // Send an email to all admins
-            
+
             // $admins = Admin::where('mail_status', 'mail')->get();
             // foreach ($admins as $admin) {
             //     Mail::to($admin->email)->send(new ContactMessageReceived($contact));
