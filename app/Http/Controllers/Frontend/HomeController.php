@@ -198,9 +198,9 @@ class HomeController extends Controller
             // Get all admins with 'mail_status' set to 'mail'
             $admins = Admin::where('mail_status', 'mail')->get();
 
-            // foreach ($admins as $admin) {
-            //     Notification::send($admin, new JobApplyNotification($application)); // Pass the entire application
-            // }
+            foreach ($admins as $admin) {
+                Notification::send($admin, new JobApplyNotification($application)); // Pass the entire application
+            }
 
             // Redirect with success message
             return redirect()->back()->with('success', 'Application submitted successfully!');
@@ -263,10 +263,10 @@ class HomeController extends Controller
             ]);
 
             // Send an email to all admins
-            // $admins = Admin::where('mail_status', 'mail')->get();
-            // foreach ($admins as $admin) {
-            //     Mail::to($admin->email)->send(new ContactMessageReceived($contact));
-            // }
+            $admins = Admin::where('mail_status', 'mail')->get();
+            foreach ($admins as $admin) {
+                Mail::to($admin->email)->send(new ContactMessageReceived($contact));
+            }
 
             // If emails were successfully sent, store the contact record
             $contact->save();

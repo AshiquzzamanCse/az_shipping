@@ -140,9 +140,9 @@
                                                 </button>
                                             </div>
 
-                                            {{-- <a href="{{ route('admin.password.request') }}"
+                                            <a href="{{ route('admin.password.request') }}"
                                                 class="d-block mt-3 text-muted">Forgot Password?
-                                                Click Here</a> --}}
+                                                Click Here</a>
 
                                         </form>
                                     </div>
