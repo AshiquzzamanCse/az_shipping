@@ -126,7 +126,7 @@
             <table id="kt_datatable_example_5" class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
                 <thead class="bg-dark text-light">
                     <tr>
-                        <th width="5%">No</th>
+                        <th width="3%">No</th>
                         <th width="5%">Rank Name</th>
                         <th width="10%">Name</th>
                         <th width="10%">Email</th>

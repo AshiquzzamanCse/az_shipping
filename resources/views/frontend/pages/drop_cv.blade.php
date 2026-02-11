@@ -1,8 +1,15 @@
 @extends('frontend.master')
 
 @section('content')
+    <style>
+        @media (max-width: 767.98px) {
+            .sign-in-area {
+                padding-top: 150px !important;
+            }
+        }
+    </style>
 
-    <div class="page-banner bg-3">
+    <div class="page-banner bg-3 d-none d-lg-block">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="container">
