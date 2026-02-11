@@ -20,12 +20,10 @@ use App\Models\Service;
 use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Vision;
-use App\Notifications\JobApplyNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -265,10 +263,11 @@ class HomeController extends Controller
             ]);
 
             // Send an email to all admins
-            $admins = Admin::where('mail_status', 'mail')->get();
-            foreach ($admins as $admin) {
-                Mail::to($admin->email)->send(new ContactMessageReceived($contact));
-            }
+            
+            // $admins = Admin::where('mail_status', 'mail')->get();
+            // foreach ($admins as $admin) {
+            //     Mail::to($admin->email)->send(new ContactMessageReceived($contact));
+            // }
 
             // If emails were successfully sent, store the contact record
             $contact->save();
