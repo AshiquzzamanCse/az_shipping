@@ -1,51 +1,67 @@
 <?php
 namespace App\Notifications;
 
+use App\Models\ApplyPost;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class JobApplyNotification extends Notification implements ShouldQueue
+// Import the ApplyPost model
+
+class JobApplyNotification extends Notification
 {
     use Queueable;
 
     public $application;
 
-    public function __construct($application)
+    /**
+     * Create a new notification instance.
+     *
+     * @param ApplyPost $application
+     * @return void
+     */
+    public function __construct(ApplyPost $application)
     {
         $this->application = $application;
     }
 
-    // ✅ Choose notification channels
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
-        // use ['database'] if you don't want email
+        return ['mail', 'database']; // Send via both mail and database channels
     }
 
-    // ✅ Email Notification
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->subject('New Job Application Received')
-            ->greeting('Hello Admin,')
-            ->line('A new job application has been submitted.')
-            ->line('Name: ' . $this->application->name)
-            ->line('Email: ' . $this->application->email)
-            ->line('Phone: ' . $this->application->phone)
-            ->action('View Application', url('/admin/applications/' . $this->application->id))
-            ->line('Thank you.');
-    }
-
-    // ✅ Database Notification
-    public function toDatabase($notifiable)
+    /**
+     * Get the array representation of the notification to store in the database.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
     {
         return [
-            'application_id' => $this->application->id,
-            'name'           => $this->application->name,
-            'email'          => $this->application->email,
-            'job_id'         => $this->application->job_id,
+            'name'    => $this->application->name,
+            'message' => 'A new application has been submitted.', // You can customize the message
+            'subject' => 'New Job Application',                   // Fallback subject
         ];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail(object $notifiable): MailMessage
+    {
+        return (new MailMessage)
+            ->line('A new application has been submitted.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 }
