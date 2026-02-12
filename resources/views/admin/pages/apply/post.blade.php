@@ -168,6 +168,9 @@
                             <td>
                                 <h6>{{ $item->passport_number }}</h6>
                             </td>
+                            <td>
+                                <h6>{{ $item->cdc_number }}</h6>
+                            </td>
 
                             <td>
                                 <h6 class="text-uppercase">{{ $item->nationality }}</h6>
