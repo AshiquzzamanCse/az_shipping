@@ -137,7 +137,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     //Apply Post
     Route::get('/apply/post', [AdminController::class, 'applyPost'])->name('apply.post');
-    
+
 });
 
 Route::middleware(['auth:admin'])->group(function () {

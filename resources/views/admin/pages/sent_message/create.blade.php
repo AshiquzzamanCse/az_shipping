@@ -60,8 +60,6 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                        
 
                         <!-- Subject Field -->
                         <div class="col-12 mb-3">
@@ -83,6 +81,33 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                        </div>
+
+                        <!-- Email Field -->
+                        {{-- <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label for="subject" class="mb-2">Employee Email</label><br>
+                                @foreach ($admins as $admin)
+                                    <input type="checkbox" class="me-2 mt-0">{{ $admin->email }}<br>
+                                @endforeach
+                                @error('subject')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div> --}}
+                        <div class="col-12 mb-3">
+                            <label class="mb-2">Employee Emails</label><br>
+
+                            @foreach ($admins as $admin)
+                                <div>
+                                    <input type="checkbox" name="emails[]" value="{{ $admin->email }}">
+                                    {{ $admin->email }}
+                                </div>
+                            @endforeach
+
+                            @error('emails')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <!-- Submit Button -->
