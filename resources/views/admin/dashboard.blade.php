@@ -257,8 +257,8 @@
                         class="table table-striped table-row-bordered gy-5 gs-7 border rounded">
                         <thead class="bg-dark text-light">
                             <tr>
-                                <th width="3%">No</th>
-                                <th width="5%">Rank Name</th>
+                                <th width="4%">No</th>
+                                <th width="8%">Rank Name</th>
                                 <th width="10%">Name</th>
                                 <th width="10%">Email</th>
                                 <th width="10%">Phone</th>
@@ -266,9 +266,8 @@
                                 <th width="10%">CDC Number</th>
                                 <th width="10%">Nationality</th>
                                 <th width="10%">CV</th>
-
+                                <th width="10%">Date</th>
                                 <th width="5%">Actions</th>
-
                             </tr>
                         </thead>
                         <tbody class="fw-bold text-gray-600">
@@ -317,6 +316,9 @@
                                                 class="text-danger">Download
                                                 CV</a>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <h6>{{ $item->created_at->format('d M Y') }}</h6>
                                     </td>
 
 
