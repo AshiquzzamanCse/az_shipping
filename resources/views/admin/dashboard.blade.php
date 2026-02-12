@@ -291,7 +291,7 @@
                                     </td>
 
                                     <td>
-                                        <h6>{{ $item->email }}</h6>
+                                        <h6 class="text-lowercase">{{ $item->email }}</h6>
                                     </td>
 
                                     <td>
@@ -305,7 +305,7 @@
                                     </td>
 
                                     <td>
-                                        <h6>{{ $item->nationality }}</h6>
+                                        <h6 class="text-uppercase">{{ $item->nationality }}</h6>
                                     </td>
 
                                     <td>
